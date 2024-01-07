@@ -1,0 +1,111 @@
+
+h2{
+	width: 100%;
+	text-align: center;
+	margin:auto;
+	background-color: rgb(142, 223, 240);
+	height: 10%;
+	font-family: sans-serif;
+	font-size: 4em;
+}
+strong {
+    font-weight: 700;
+    background-color: yellow;
+}
+
+p {
+    font-family: sans-serif;
+}
+
+li a{
+	display: block;
+	width:60px;
+	background-color: red;
+}
+
+.loginForm{
+	border:1px solid black;
+	border-radius: 10px;
+	width: 20%;
+	height: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	overflow: hidden;
+}
+.loginTitle{
+	height: 50%;
+	width: 100%;
+	margin: auto;
+	text-align: center;
+    background-color: rgb(142, 223, 240);
+    border-bottom: 1px solid black;
+    
+}
+.loginTitleText{
+	height: 50%;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	background-color: rgb(142, 223, 240);
+	text-align: center;
+	padding-top: 70px;
+}
+.loginButtonDiv{
+	text-align: center;
+	
+	
+}
+.loginButton{
+	margin: 10px auto;
+	display: flex;
+	height: 3em;
+	width: 6em;
+}
+.navbar a{
+	list-style-position: none;
+	margin:0;
+	padding: 0;
+}
+
+.usernameInputDiv{
+	width: 90%;
+	margin: auto;
+	font-family: sans-serif;
+}
+.passInputDiv{
+	width:90%;
+	margin:auto;
+	font-family: sans-serif;
+}
+.username{
+	padding: 5px 20px;
+	margin-top: 10px;
+	width: 80%;
+}
+.password{
+	padding: 5px 20px;
+	margin-top: 10px;
+	width: 80%;
+}
+.notification{
+	overflow: hidden;
+	border: 2px red solid;
+	border-radius: 10px;
+	left: 43.5%;
+	top: 3%;
+	position: relative;
+	text-align: center;
+	background-color: indianred;
+	width: 12%;
+	padding: 10px 10px;
+}
+
+html{
+	height: 100%;
+}
+body{
+	height: 100%;
+}

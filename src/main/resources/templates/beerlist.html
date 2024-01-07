@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Server Programming with Spring Boot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div class="mainHeader">
+		<a  class="logo"><p th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</p></a>
+		<div class="header-right">
+		  <a class="active">Home</a>
+		  <a href="#products">Products</a>
+		  <a href="#shoppingcart">Shopping cart</a>
+		  <a href="#profile">My profile</a>
+		  <a class ="logout" th:href="@{/logout}">Log out</a>
+		</div>
+	</div>
+	<table class="table table-bordered">
+		<tr>
+			<th>Name:</th>
+			<th>Price:</th>
+			<th>Rating:</th>
+			<th>Size and material:</th>
+			<th>Store:</th>
+			<th>Picture:</th>
+			<th>Actions:</th>
+		</tr>
+		<tr th:each="beer: ${beers}">
+			<td th:text="${beer.name}"></td>
+			<td th:text="${beer.hinta}+'€'"></td>
+			<td th:text="${beer.maku}"></td>
+			<td th:text="${beer.koko}"></td>
+			<td th:text="${beer.kauppa.name}"></td>
+			<td><img th:src="${beer.photosImagePath}" width="200" height="200"/></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a
+				th:href="@{/delete/{id}(id=${beer.id})}" class="btn btn-danger">Delete
+					this beer</a><br>
+			<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editbeer/{id}(id=${beer.id})}"
+					class="btn btn-success">Edit this beer</a><br>
+			<a class="btn btn-success"> Add to shopping cart</a>
+					</td>
+		</tr>
+	</table>
+	<a sec:authorize="hasAuthority('ADMIN')"href="/addbeer" class="btn btn-primary">Add a beer</a>
+	<a th:href="@{/logout}" class="btn btn-danger">Log out</a>
+</body>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.css"
+	th:href="@{/css/bootstrap.css}" />
+</html>
