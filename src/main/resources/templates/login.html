@@ -5,13 +5,13 @@
         <title>Spring Security Example </title>
     </head>
     <body>
-	<div class="notification">
-			  <div th:if="${param.error}">
-              Invalid username and password.
-        	  </div>
-        	  <div th:if="${param.logout}">
-              you have been logged out.
-        	  </div>
+	<div>
+	      <div class="notification" th:if="${param.error}">
+          Invalid username or password.
+          </div>
+          <div class="notification" th:if="${param.logout}">
+          you have been logged out.
+          </div>
     </div> 	
 	<div class="loginForm">
 		<div class="loginTitle">

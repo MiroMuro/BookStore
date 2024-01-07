@@ -44,21 +44,17 @@ public class BookstoreApplication {
 		//Otetaan 3 kuvaa /Bookstore/ päätteestä, ja muutetaan se commandlinerunnerille
 		//sopivaan muotoon. MockMultipartFile on MultipartFile:stä testaamiseen
 		//tarkoitettu tiedostomuoto
-		File tiedosto = new File("olutolut.jpg");
-		//Luetaan kuva tiedostosta
-		FileInputStream stream = new FileInputStream(tiedosto);
-		//Tehdään kuvasta lisättävä.
-		MockMultipartFile multipartFileToSend = new MockMultipartFile("tiedosto",tiedosto.getName(), MediaType.IMAGE_JPEG_VALUE,stream);
 		
-		File tiedosto1 = new File("karhu4bottle.jpeg");
+		
+		File tiedosto1 = new File("user-photos/karhu4bottle.jpeg");
 		FileInputStream stream1 = new FileInputStream(tiedosto1);
 		MockMultipartFile multipartFileToSend1 = new MockMultipartFile("tiedosto",tiedosto1.getName(), MediaType.IMAGE_JPEG_VALUE,stream1);
 		
-		File tiedosto2 = new File("pirkka3.jpeg");
+		File tiedosto2 = new File("user-photos/pirkka3.jpeg");
 		FileInputStream stream2 = new FileInputStream(tiedosto2);
 		MockMultipartFile multipartFileToSend2 = new MockMultipartFile("tiedosto",tiedosto2.getName(), MediaType.IMAGE_JPEG_VALUE,stream2);
 		
-		File tiedosto3 = new File("sandels.jpg");
+		File tiedosto3 = new File("user-photos/sandels.jpg");
 		FileInputStream stream3 = new FileInputStream(tiedosto3);
 		MockMultipartFile multipartFileToSend3 = new MockMultipartFile("tiedosto", tiedosto3.getName(), MediaType.IMAGE_JPEG_VALUE, stream3);
 		

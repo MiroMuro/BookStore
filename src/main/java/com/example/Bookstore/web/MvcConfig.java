@@ -20,7 +20,7 @@ public class MvcConfig  implements WebMvcConfigurer{
 	
 	private void exposeDirectory(String dirName, ResourceHandlerRegistry registry) {
 		//Luodaan uusi Path tyyppiä oleva muuttuja ja annetaan sille
-		//kuva tiedoston sijainti.
+		//kuvatiedoston sijainti.
 		Path uploadDir = Paths.get(dirName);
 		String uploadPath = uploadDir.toFile().getAbsolutePath();
 		//Siistitään polku helpommin luettavaksi.
