@@ -78,7 +78,7 @@ public class BeerController {
 		//Databasen taulussa on vain kuvan nimi, oikea kuva on tiedostojärjetelmässä
 		//koneella.
 		
-		String uploadDir = "user-photos/null";
+		String uploadDir = "user-photos/";
 		FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
 		repository.save(beer);

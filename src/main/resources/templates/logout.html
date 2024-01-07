@@ -2,14 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
-    <title>uloskirjautunut</title>
+      <title>Logout?</title>
     </head>
     <body>
-    <div>
-    <form th:action ="@{/logout}" method="post">
-    <p>Do you really want to sign out?<p>
-    	<input type="submit" value="Sign Out"/>
-    </form>
+      <div class="logoutDiv">
+        <form th:action ="@{/logout}" method="post">
+			<div class="logoutTextDiv">
+			<p class="logoutText">Do you want to log out?</p>
+			</div>
+          <div class="logoutButtonDiv"><input class="logoutButton" type="submit" value="Log Out"/></div>
+        </form>
     </div>
-    
     </body>
+    <link type="text/css" rel="stylesheet" href="css/main.css" th:href="@{/css/main.css}"></link>
+</html>

@@ -13,6 +13,7 @@
 		  <a href="#products">Products</a>
 		  <a href="#shoppingcart">Shopping cart</a>
 		  <a href="#profile">My profile</a>
+		  <a sec:authorize="hasAuthority('ADMIN')" href="/addbeer">Add product</a>
 		  <a class ="logout" th:href="@{/logout}">Log out</a>
 		</div>
 	</div>
@@ -42,7 +43,7 @@
 					</td>
 		</tr>
 	</table>
-	<a sec:authorize="hasAuthority('ADMIN')"href="/addbeer" class="btn btn-primary">Add a beer</a>
+	
 	
 </body>
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.css"
