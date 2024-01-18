@@ -2,6 +2,7 @@ package com.example.Bookstore.domain;
 
 import java.awt.image.BufferedImage;
 import java.beans.Transient;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,8 @@ import javax.persistence.Table;
 
 import com.example.Bookstore.domain.Kauppa;
 
+
+
 @Entity
 @Table(name="beer")
 public class Beer {
@@ -21,7 +24,7 @@ public class Beer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
+	@Column(nullable=false)
 	private String name;
 	private double hinta;
 	private String maku;
@@ -35,16 +38,28 @@ public class Beer {
 	@JoinColumn(name = "kauppaid")
 	private Kauppa kauppa;
 	
+	/*@ManyToOne
+	@JoinColumn(name="shoppinglistid")
+	private ShoppingList shoppinglist;
+	*/
 	
-// private String author;
-	public Beer(String name, double hinta, String maku, String koko, Kauppa kauppa, String photos) {
+
+	public Beer(String name, double hinta, String maku, String koko, Kauppa kauppa,String photos) {
+		super();
+		this.name = name;
+		this.hinta = hinta;
+		this.maku = maku;
+		this.koko = koko;
+		this.photos = photos;
+		this.kauppa = kauppa;
+	}
+	public Beer(String name, double hinta, String maku, String koko, Kauppa kauppa) {
 		super();
 		this.name = name;
 		this.hinta = hinta;
 		this.maku = maku;
 		this.koko = koko;
 		this.kauppa = kauppa;
-		this.photos = photos;
 	}
 	@Transient
 	//Luodaan uusi getteri, jolla kuva saadaan näkyviin html:llä.
@@ -112,6 +127,25 @@ public class Beer {
 	public void setPhotos(String photos) {
 		this.photos = photos;
 	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(hinta, id, kauppa, koko, maku, name, photos);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Beer other = (Beer) obj;
+		return Double.doubleToLongBits(hinta) == Double.doubleToLongBits(other.hinta) && Objects.equals(id, other.id)
+				&& Objects.equals(kauppa, other.kauppa) && Objects.equals(koko, other.koko)
+				&& Objects.equals(maku, other.maku) && Objects.equals(name, other.name)
+				&& Objects.equals(photos, other.photos);
+	}
+	
 	
 
 }

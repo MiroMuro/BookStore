@@ -23,6 +23,7 @@ import com.example.Bookstore.domain.Kauppa;
 import com.example.Bookstore.domain.KauppaRepository;
 import com.example.Bookstore.domain.User;
 import com.example.Bookstore.domain.UserRepository;
+
 import com.example.Bookstore.web.BeerController;
 @SpringBootApplication
 @EnableJpaRepositories
@@ -68,15 +69,16 @@ public class BookstoreApplication {
 		krepository.save(new Kauppa("K-supermarket"));
 		
 		//Lisätään Controllerin kautta testioluita databaseen sekä repositorioon.
-		beerController.save(new Beer( "Olut Olut",0.99,"3/5","0.33L can",krepository.findByName("Lidl"),null),multipartFileToSend1);
-		beerController.save(new Beer("Karhu IV", 2.35,"4/5", "0.33L Glass bottle",krepository.findByName("Prisma"),null),multipartFileToSend2);
-		beerController.save(new Beer("Pirkka 3 lager (sininen)",1.25,"3.5/5","0.33L can",krepository.findByName("K-market"),null), multipartFileToSend3);
+		beerController.save(new Beer( "Karhu IV",0.99,"3/5","0.33L can",krepository.findByName("Lidl")),multipartFileToSend1);
+		beerController.save(new Beer("Pirkka 3 Lager (Sininen)", 2.35,"4/5", "0.33L Glass bottle",krepository.findByName("Prisma")),multipartFileToSend2);
+		beerController.save(new Beer(" III - Sandels",1.25,"3.5/5","0.33L can",krepository.findByName("K-market")), multipartFileToSend3);
 	
-		
-		
 		//Luodaan kaksi käyttäjää testimielessä spring boot securityllä
 		Urepo.save(new User("user","$2a$10$Xgc5M1k2WNh4sw93qmgrM.Hc64iaifzro.ME8LjejMl.yyNOpGG6G","USER"));
 		Urepo.save(new User("admin","$2a$10$oXYiJuvfs8hrvWUAIgbRbOvi1m60crb4n7GWs6ZLeb2HNc.ES9ENC","ADMIN"));
+		
+		//Lisätään ostoslistalle pari olutta.
+		//shoppinglistRepository.save(new ShoppingList)
 
 
 		};

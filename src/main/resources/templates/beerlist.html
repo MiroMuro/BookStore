@@ -28,6 +28,12 @@
 			<th>Actions:</th>
 		</tr>
 		<tr th:each="beer: ${beers}">
+			<td>
+				<p th:text="${beer.name}"></p>
+				<p th:text="${beer.hinta}"></p>
+				<p th:text="${beer.maku}"></p>
+				<p th:text="${beer.koko}"></p>
+			</td>
 			<td th:text="${beer.name}"></td>
 			<td th:text="${beer.hinta}+'€'"></td>
 			<td th:text="${beer.maku}"></td>

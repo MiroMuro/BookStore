@@ -11,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.Bookstore.domain.Beer;
 import com.example.Bookstore.domain.BeerRepository;
 import com.example.Bookstore.domain.KauppaRepository;
+import com.example.Bookstore.service.ProductServiceImpl;
 
 import org.springframework.stereotype.Controller;
 
@@ -32,8 +34,18 @@ public class BeerController {
 	private BeerRepository repository;
 	@Autowired
 	private KauppaRepository krepository;
-
-	// Metodi palauttaa yhden olue json muodossa REST palveluna.
+	
+	@Autowired
+	private ProductServiceImpl beerService = new ProductServiceImpl(repository);
+	
+	
+	
+	@GetMapping(value ="/products")
+	public Iterable<Beer> getAllProductsRest(){
+		return beerService.getAllBeers();
+	}
+	
+	// Metodi palauttaa yhden oluen json muodossa REST palveluna.
 	@RequestMapping(value = "/beer/{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Beer> findbeerRest(@PathVariable("id") Long beerId) {
 		return repository.findById(beerId);
@@ -66,7 +78,7 @@ public class BeerController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Beer beer, @RequestParam("image") MultipartFile multipartFile) throws IOException {
 		
-		System.out.println(beer.getName()+" "+beer.getPhotosImagePath());
+		
 		// Annetaan tallennettavan Beer-objektin photos attribuutille
 		// arvoksi tiedoston sijainti.
 		

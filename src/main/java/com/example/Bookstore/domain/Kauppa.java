@@ -1,6 +1,7 @@
 package com.example.Bookstore.domain;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -48,6 +49,21 @@ public class Kauppa {
 
 	public void setBeers(List<Beer> beers) {
 		this.beers = beers;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(beers, id, name);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Kauppa other = (Kauppa) obj;
+		return Objects.equals(beers, other.beers) && Objects.equals(id, other.id) && Objects.equals(name, other.name);
 	}
 
 }
